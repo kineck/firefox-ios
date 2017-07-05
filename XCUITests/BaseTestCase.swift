@@ -70,7 +70,13 @@ class BaseTestCase: XCTestCase {
             waitForExpectations(timeout: finishLoadingTimeout, handler: nil)
         }
     }
-
+    
+    func isiPad() -> Bool {
+        if (UIDevice.current.userInterfaceIdiom == .pad){
+            return true
+        }
+        return false
+    }
 }
 
 extension BaseTestCase {
