@@ -109,19 +109,42 @@ List of current Events related data that is sent:
 {
   "event" : "E_Second_Run"
 }
-
-      case secondRun = "E_Second_Run"
-    case openedApp = "E_Opened_App"
-    case openedLogins = "Opened Login Manager"
-    case openedBookmark = "E_Opened_Bookmark"
-    case openedNewTab = "E_Opened_New_Tab"
-    case interactWithURLBar = "E_Interact_With_Search_URL_Area"
-    case savedBookmark = "E_Saved_Bookmark"
-    case openedTelephoneLink = "Opened Telephone Link"
-    case openedMailtoLink = "E_Opened_Mailto_Link"
-    case saveImage = "E_Download_Media_Saved_Image"
-    case savedLoginAndPassword = "E_Saved_Login_And_Password"
-case clearPrivateData = "E_Cleared_Private_Data"
+* Whenever the App is launched.
+{
+  "event" : "E_Opened_App"
+}
+* When the Login Manager is opened.
+{
+  "event" : "Opened Login Manager"
+}
+* The user loads a bookmark from home panel.
+{
+  "event" : "E_Opened_Bookmark"
+}
+* The user opened a new tab.
+{
+  "event" : "E_Opened_New_Tab"
+}
+* The user interacts with search url area.
+{
+  "event" : "E_Interact_With_Search_URL_Area"
+}
+* The user saves a bookmark.
+{
+  "event" : "E_Saved_Bookmark"
+}
+* The user opened a telephone link from a web page.
+{
+  "event" : "Opened Telephone Link"
+}
+* The user opened a mailto link from a web page.
+{
+  "event" : "E_Opened_Mailto_Link"
+}
+* The user cleared their private data.
+{
+  "event" : "E_Cleared_Private_Data"
+}
 * Download videos or any other media
 {
   "event" : "E_Download_Media_Saved_Image"
@@ -130,106 +153,35 @@ case clearPrivateData = "E_Cleared_Private_Data"
 {
   "event" : "E_Saved_Login_And_Password"
 }
-* Save a bookmark from Fennec menu
-{
-  "event" : "E_Saved_Bookmark"
-}
-* Load the bookmark from home panel
-{
-  "event" : "E_Opened_Bookmark"
-}
-* Interact with search url area
-{
-  "event" : "E_Interact_With_Search_URL_Area"
-}
-* When a screenshot is taken
-{
-  "event" : "E_Screenshot"
-}
 
 Deep Links:
-Deep links are actions that can point Fennec to open certain pages or load features such as `show bookmark list` or
-`open a SUMO page`. When users see a prompt Leanplum message, they can click the button(s) on it. These buttons can
-trigger the following deep links
-* Link to Set Default Browser settings (firefox://default_browser)
-* Link to specific Add-on page (http://link_to_the_add_on_page)
-* Link to sync signup/sign in (firefox://sign_up)
-* Link to default search engine settings (firefox://preferences_search)
-* Link to “Save as PDF” feature (firefox://save_as_pdf)
-* Take user directly to a Sign up for a newsletter (http://link_to_newsletter_page)
-* Link to bookmark list (firefox://bookmark_list)
-* Link to history list (firefox://history_list)
-* Link to general preferences (firefox://preferences)
-* Link to privacy preferences (firefox://preferences_privacy)
-* Link to notifications preferences (firefox://preferences_notifications)
-* Link to accessibility preferences (firefox://preferences_accessibility)
+Deep links are actions that can point Firefox to open certain pages or load features such as `show bookmark list` or
+`open Firefox Account Settings`. When users receives a Message, they can click the button(s) on it. These buttons can
+trigger the following deep links:
+* Link to sync signup/sign in (firefox://deep-link?url=settings/fxa)
+* Link to default search engine settings (firefox://deep-link?url=settings/search)
+* Link to bookmark list (firefox://deep-link?url=homepanel/bookmarks)
+* Link to history list (firefox://deep-link?url=/history)
+* Link to general preferences (firefox://deep-link?url=settings)
+* Link to the mailto preferences (firefox://deep-link?url=settings/mailto)
+* Link to open a new tab (firefox://deep-link?url=settings/newtab)
+* Link to open the user's homepage (firefox://deep-link?url=settings/homepage)
+* Link to open the settings page so the user can clear their private data (firefox://deep-link?url=settings/clear-private-data)
+* Link to open a new private tab (firefox://deep-link?url=homepanel/new-private-tab)
+
+
+Note these deep links can only be processed from within Firefox (i.e., if they are clicked from outside of Firefox, Firefox will open but nothing further will happen).
 
 Messages :
-Messages are in-app prompts to the user from Leanplum. The interaction of that prompt will be kept and sent to Leanplum backend (such
-as "Accept" and "Show"). A messages is a combination of an Event and a Deep Link. The combinations are downloaded from Leanplum
-when Leanplum SDK is initialized. When the criteria is met (set in Leanplum backend, could be when an event happens a certain number of times,
-and/or targeting certain user attribute ), a prompt message will show up. And there may be buttons for users to click. Those clicks
-may trigger deep links.
+Messages are in-app prompts to the user from Leanplum. The user interaction of that prompt will be sent to the Leanplum backend (such as "Accept" or "Show") to track overall engagement with the Message. The Message is downloaded from Leanplum when the Leanplum SDK is initialized at App start, assuming the fulfillment criteria for the Message is met. As mentioned before, the fulfillment criteria is a set of required Events and User Attributes. The fulfillment criteria are set in the Leanplum backend.
 
-List of current messages are:
-* Load Bookmark - Default Browser Promotion
-  LoadBookmark Promote Default Browser : A user click an item in bookmark list, a dialog will be shown to ask you make Fennec default.
-  Event             : E_Opened_Bookmark
-  Deep Link         : firefox://default_browser
-  User Attribute    : defaultBrowser : false
-
-* Open Firefox X times - Default Browser Promotion
-  Open Firefox and show dialog to link to default browser settings
-  Event             : Launch(default Leanplum event, no need to add code)
-  Deep Link         : firefox://default_browser
-  User Attribute    : defaultBrowser : false
-
-* Add Bookmark X times - Default Browser Promotion
-  Add a bookmark and show dialog to link to default browser settings
-  Event             : E_Saved_Bookmark
-  Deep Link         : firefox://default_browser
-  User Attribute    : defaultBrowser : false
-
-* Search URL Area - Default Search Engine Promotion
-  Interact with search Promote Engine : A user enter the url bar, we'll show the search settings
-  Event             : E_Interact_With_Search_URL_Area
-  Deep Link         : firefox://preferences_search
-
-* Save Bookmark - Bookmark List Promotion
-  Save Bookmark Promote Bookmark : When a user save a page as bookmark, we prompt the user to go to bookmark list.
-  Event             : E_Saved_Bookmark
-  Deep Link         : firefox://bookmark_list
+The current Message list for iOS is still under formulation.
 
 Technical notes
 ~~~~~~~~~~~~~~~
-
-Build flags controlling the Leanplum SDK integration
-==================================================
-
-To test this locally, add lines like:
-
-export MOZ_ANDROID_MMA=1
-ac_add_options --with-leanplum-sdk-keyfile=/path/to/leanplum-sdk-developer.token
-
-MOZ_ANDROID_MMA depends on MOZ_NATIVE_DEVICES and MOZ_ANDROID_GCM.
-Since Leanplum requires Google Play Services library, those flags are a proxy for it, and enable respectively.
-
-We want to enable MOZ_ANDROID_MMA in Nightly, but only for
-MOZILLA_OFFICIAL builds.  Since MOZILLA_OFFICIAL is still defined in
-old-configure.in, we can't integrate it in
-mobile/android/moz.configure, and therefore we enable using the
-automation mozconfigs.
-
-Technical notes on the Leanplum SDK integration
-=============================================
-
-Just like Adjust, MmaDelegate uses mmaInterface to inject the MmaLeanplumImp and MmaStubImp.
-Constants used by Leanplum is in MmaConstants. Services in AndroidManifest are in
-``mobile/android/base/MmaAndroidManifest_services.xml.in`` which is also injected by build flag
-MOZ_ANDROID_MMA.
 
 Notes and links
 ===============
 
 .. _Leanplum web page: http://leanplum.com/
-.. _github repository: https://github.com/Leanplum/Leanplum-Android-SDK
+.. _github repository: https://github.com/Leanplum/Leanplum-iOS-SDK
