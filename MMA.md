@@ -17,7 +17,7 @@ An Event or a series of Events plus some User Attributes may trigger a Message, 
 
 
 Data collection
-~~~~~~~~~~~~~~~
+
 
 Who will have Leanplum enabled?
 ======================================================
@@ -40,7 +40,9 @@ What data is collected and sent to the Leanplum backend?
 ======================================================
 
 The Leanplum SDK collects and sends two messages to the Leanplum backend.  The messages have the
-following parameters::
+following parameters:
+
+~~~~~~~~~~~~~~~
 
   // Sent every time when an event is triggered
   "action" -> "track"                   // track: an event is tracked.
@@ -88,6 +90,8 @@ following parameters::
   "time" -> "1.497595093902E9"          // System time in second.
   "token" -> "nksZ5pa0R5iegC7wj...."    // Token come from Leanplum backend.
 
+~~~~~~~~~~~~~~~
+
 Notes on what data is collected
 -------------------------------
 
@@ -102,54 +106,79 @@ Default value for event value is 0.0. Default value for event info is empty stri
 
 List of current Events related data that is sent:
 * The first launch after install
+
 {
   "event" : "E_First_Run"
 }
+
 * The second launch after install
+
 {
   "event" : "E_Second_Run"
 }
+
 * Whenever the App is launched.
+
 {
   "event" : "E_Opened_App"
 }
+
 * When the Login Manager is opened.
+
 {
   "event" : "Opened Login Manager"
 }
+
 * The user loads a bookmark from home panel.
+
 {
   "event" : "E_Opened_Bookmark"
 }
+
 * The user opened a new tab.
+
 {
   "event" : "E_Opened_New_Tab"
 }
+
 * The user interacts with search url area.
+
 {
   "event" : "E_Interact_With_Search_URL_Area"
 }
+
 * The user saves a bookmark.
+
 {
   "event" : "E_Saved_Bookmark"
 }
+
 * The user opened a telephone link from a web page.
+
 {
   "event" : "Opened Telephone Link"
 }
+
 * The user opened a mailto link from a web page.
+
 {
   "event" : "E_Opened_Mailto_Link"
 }
+
 * The user cleared their private data.
+
 {
   "event" : "E_Cleared_Private_Data"
 }
+
 * Download videos or any other media
+
 {
   "event" : "E_Download_Media_Saved_Image"
 }
+
 * Save password and login from door hanger
+
 {
   "event" : "E_Saved_Login_And_Password"
 }
@@ -176,12 +205,3 @@ Messages :
 Messages are in-app prompts to the user from Leanplum. The user interaction of that prompt will be sent to the Leanplum backend (such as "Accept" or "Show") to track overall engagement with the Message. The Message is downloaded from Leanplum when the Leanplum SDK is initialized at App start, assuming the fulfillment criteria for the Message is met. As mentioned before, the fulfillment criteria is a set of required Events and User Attributes. The fulfillment criteria are set in the Leanplum backend.
 
 The current Message list for iOS is still under formulation.
-
-Technical notes
-~~~~~~~~~~~~~~~
-
-Notes and links
-===============
-
-.. _Leanplum web page: http://leanplum.com/
-.. _github repository: https://github.com/Leanplum/Leanplum-iOS-SDK
