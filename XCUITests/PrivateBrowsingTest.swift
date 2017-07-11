@@ -26,37 +26,37 @@ class PrivateBrowsingTest: BaseTestCase {
     }
 
     func testPrivateTabDoesNotTrackHistory() {
-//        navigator.openURL(urlString: url1)
-//        navigator.goto(BrowserTabMenu)
-//        // Go to History screen
-//        waitforExistence(app.toolbars.buttons["HistoryMenuToolbarItem"])
-//        app.toolbars.buttons["HistoryMenuToolbarItem"].tap()
-//        navigator.nowAt(NewTabScreen)
-//        waitforExistence(app.tables["History List"])
-//        
-//        XCTAssertTrue(app.tables["History List"].staticTexts[url1Label].exists)
-//        // History without counting Recently Closed and Synced devices
-//        let history = app.tables["History List"].cells.count - 2
-//        
-//        XCTAssertEqual(history, 1, "History entries in regular browsing do not match")
-//        
-//        // Go to Private browsing to open a website and check if it appears on History
-//        
-//        navigator.goto(NewPrivateTabScreen)
-//        navigator.goto(PrivateTabTray)
-//        navigator.openURL(urlString: url2)
-//        navigator.nowAt(PrivateBrowserTab)
-//        waitForValueContains(app.textFields["url"], value: "people")
-//        navigator.goto(BrowserTabMenu)
-//        waitforExistence(app.toolbars.buttons["HistoryMenuToolbarItem"])
-//        app.toolbars.buttons["HistoryMenuToolbarItem"].tap()
-//        
-//        waitforExistence(app.tables["History List"])
-//        XCTAssertTrue(app.tables["History List"].staticTexts[url1Label].exists)
-//        XCTAssertFalse(app.tables["History List"].staticTexts[url2Label].exists)
-//        
-//        let privateHistory = app.tables["History List"].cells.count - 2
-//        XCTAssertEqual(privateHistory, 1, "History entries in private browsing do not match")
+        navigator.openURL(urlString: url1)
+        navigator.goto(BrowserTabMenu)
+        // Go to History screen
+        waitforExistence(app.toolbars.buttons["HistoryMenuToolbarItem"])
+        app.toolbars.buttons["HistoryMenuToolbarItem"].tap()
+        navigator.nowAt(NewTabScreen)
+        waitforExistence(app.tables["History List"])
+        
+        XCTAssertTrue(app.tables["History List"].staticTexts[url1Label].exists)
+        // History without counting Recently Closed and Synced devices
+        let history = app.tables["History List"].cells.count - 2
+        
+        XCTAssertEqual(history, 1, "History entries in regular browsing do not match")
+        
+        // Go to Private browsing to open a website and check if it appears on History
+        
+        navigator.goto(NewPrivateTabScreen)
+        navigator.goto(PrivateTabTray)
+        navigator.openURL(urlString: url2)
+        navigator.nowAt(PrivateBrowserTab)
+        waitForValueContains(app.textFields["url"], value: "people")
+        navigator.goto(BrowserTabMenu)
+        waitforExistence(app.toolbars.buttons["HistoryMenuToolbarItem"])
+        app.toolbars.buttons["HistoryMenuToolbarItem"].tap()
+        
+        waitforExistence(app.tables["History List"])
+        XCTAssertTrue(app.tables["History List"].staticTexts[url1Label].exists)
+        XCTAssertFalse(app.tables["History List"].staticTexts[url2Label].exists)
+        
+        let privateHistory = app.tables["History List"].cells.count - 2
+        XCTAssertEqual(privateHistory, 1, "History entries in private browsing do not match")
     }
 
     func testTabCountShowsOnlyNormalOrPrivateTabCount() {
