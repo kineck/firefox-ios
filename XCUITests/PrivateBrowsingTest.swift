@@ -46,14 +46,17 @@ class PrivateBrowsingTest: BaseTestCase {
         navigator.goto(PrivateTabTray)
         navigator.openURL(urlString: url2)
         navigator.nowAt(PrivateBrowserTab)
-        waitForValueContains(app.textFields["url"], value: "people")
+        waitForValueContains(app.textFields["url"], value: "apple")
         navigator.goto(BrowserTabMenu)
         waitforExistence(app.toolbars.buttons["HistoryMenuToolbarItem"])
         app.toolbars.buttons["HistoryMenuToolbarItem"].tap()
         
+        // Open one tab in private browsing and check the total number of tabs
+        
         waitforExistence(app.tables["History List"])
         XCTAssertTrue(app.tables["History List"].staticTexts[url1Label].exists)
         XCTAssertFalse(app.tables["History List"].staticTexts[url2Label].exists)
+        // Open one tab in private browsing and check the total number of tabs
         
         let privateHistory = app.tables["History List"].cells.count - 2
         XCTAssertEqual(privateHistory, 1, "History entries in private browsing do not match")
