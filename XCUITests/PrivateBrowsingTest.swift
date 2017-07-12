@@ -41,9 +41,14 @@ class PrivateBrowsingTest: BaseTestCase {
         XCTAssertEqual(history, 1, "History entries in regular browsing do not match")
         
         // Go to Private browsing to open a website and check if it appears on History
-        
-        navigator.goto(NewPrivateTabScreen)
-        navigator.goto(PrivateTabTray)
+        if isiPad() == true {
+            app.buttons["TopTabsViewController.tabsButton"].tap()
+            app.buttons["TabTrayController.maskButton"].tap()
+            app.buttons["TabTrayController.addTabButton"].tap()
+        } else {
+            navigator.goto(NewPrivateTabScreen)
+            navigator.goto(PrivateTabTray)
+        }
         navigator.openURL(urlString: url2)
         navigator.nowAt(PrivateBrowserTab)
         waitForValueContains(app.textFields["url"], value: "apple")
