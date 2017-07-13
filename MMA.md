@@ -203,47 +203,48 @@ Note these deep links can only be processed from within Firefox (i.e., if they a
 
 Messages :
 Messages are in-app prompts to the user from Leanplum. The user interaction of that prompt will be sent to the Leanplum backend (such as "Accept" or "Show") to track overall engagement with the Message. The Message is downloaded from Leanplum when the Leanplum SDK is initialized at App start, assuming the fulfillment criteria for the Message is met. As mentioned before, the fulfillment criteria is a set of required Events and User Attributes. The fulfillment criteria are set in the Leanplum backend.
-List of current messages are:
 
-* Open New Tab - Focus Promotion
-A user opens a new tab, a banner will be shown to promote the Focus app.
-Event: E_Opened_New_Tab
-Deeplink: https://app.adjust.com/elh207
-User Attribute: Focus Installed : false
-User Attribute (for DE only): Klar Installed: false
+The List of current messages are:
 
-* Open Bookmark - Sync Promotion
-A user opens a bookmark, a banner will be shown to promote Sync. 
-Event: E_Opened_Bookmark
-Deeplink: firefox://deep-link?url=settings/fxa
-User Attribute: Signed In Sync: false
+Open New Tab - Focus Promotion
+* A user opens a new tab, a banner will be shown to promote the Focus app.
+* Event: E_Opened_New_Tab
+* Deeplink: https://app.adjust.com/elh207
+* User Attribute: Focus Installed : false
+* User Attribute (for DE only): Klar Installed: false
 
-* Save Bookmark - Sync Promotion
-A user saves a bookmark, a banner will be shown to promote Sync. 
-Event: E_Saved_Bookmark
-Deeplink: firefox://deep-link?url=settings/fxa
-User Attribute: Signed In Sync: false
+Open Bookmark - Sync Promotion
+* A user opens a bookmark, a banner will be shown to promote Sync. 
+* Event: E_Opened_Bookmark
+* Deeplink: firefox://deep-link?url=settings/fxa
+* User Attribute: Signed In Sync: false
 
-* Save Login and Password - Sync Promotion
-A user saves a login/password, a banner will be shown to promote Sync. 
-Event: E_Saved_Login_And_Password
-Deeplink: firefox://deep-link?url=settings/fxa
-User Attribute: Signed In Sync: false
+Save Bookmark - Sync Promotion
+* A user saves a bookmark, a banner will be shown to promote Sync. 
+* Event: E_Saved_Bookmark
+* Deeplink: firefox://deep-link?url=settings/fxa
+* User Attribute: Signed In Sync: false
 
-* Search URL Area - Default Search Engine Promotion
-A user interacts with the search url area, a banner will be shown to promote search engine settings.
-Event: E_Interact_With_Search_URL_Area
-Deeplink: firefox://deep-link?url=settings/search
-User Attribute: none 
+Save Login and Password - Sync Promotion
+* A user saves a login/password, a banner will be shown to promote Sync. 
+* Event: E_Saved_Login_And_Password
+* Deeplink: firefox://deep-link?url=settings/fxa
+* User Attribute: Signed In Sync: false
 
-* Search URL Area - Homepage Setting Promotion
-A user interacts with the search url area, a banner will be shown to promote homepage settings.
-Event: E_Interact_With_Search_URL_Area
-Deeplink: firefox://deep-link?url=settings/homepage
-User Attribute: none 
+Search URL Area - Default Search Engine Promotion
+* A user interacts with the search url area, a banner will be shown to promote search engine settings.
+* Event: E_Interact_With_Search_URL_Area
+* Deeplink: firefox://deep-link?url=settings/search
+* User Attribute: none 
 
-* Open New Tab - New Tab Setting Promotion
-A user opens a new tab, a banner will be shown to promote the New Tab settings.
-Event: E_Opened_New_Tab
-Deeplink: firefox://deep-link?url=settings/newtab
-User Attribute: none 
+Search URL Area - Homepage Setting Promotion
+* A user interacts with the search url area, a banner will be shown to promote homepage settings.
+* Event: E_Interact_With_Search_URL_Area
+* Deeplink: firefox://deep-link?url=settings/homepage
+* User Attribute: none 
+
+Open New Tab - New Tab Setting Promotion
+* A user opens a new tab, a banner will be shown to promote the New Tab settings.
+* Event: E_Opened_New_Tab
+* Deeplink: firefox://deep-link?url=settings/newtab
+* User Attribute: none 
